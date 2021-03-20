@@ -1,0 +1,18 @@
+To run this program, either invoke with: (tested on linux)
+./solution.py
+or
+python ./solution
+From the local directory.
+
+ARGS:
+arg1 = filename; CSV file with data (Optional, default = ./basket.csv)
+arg2 = agelimit; the age limit for how many days old the item is (Optiona, default = 3)
+
+There is some breif argument handling logic, to check that the first argument is a file that exists. A loose check is done on the format of the file (header comparison). There is also a check for the optional age limit parameter to confirm that it is an integer.
+
+I considered calculating the metrics as the data was being ingested, which would be optimal and neccesary for larger amounts of data, as a local variable may not be able to load all of the data. For the small amount of data provided, the benefit is inconsiquential. 
+To calculate the metrics during data ingestion most efficiently:
+Create arrays for each metric to be tracked
+	On each insertion to the array, sort the array
+A sorting algorithm for the task can be specifically optimized, I use a general bubble sort with a run time of n^2.
+Since the array being sorted each time is already mostly sorted, the real cost would be less for each run.
